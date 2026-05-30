@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUXE — Premium E-Commerce</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- CART OVERLAY -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <!-- CART SIDEBAR -->
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>Your Cart <span class="cart-count-badge" id="cartBadgeSidebar">0</span></h2>
+      <button class="cart-close" id="cartClose" aria-label="Close cart"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty" id="cartEmpty">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <p>Your cart is empty</p>
+        <span>Add items to get started</span>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-subtotal">
+        <span>Subtotal</span>
+        <span class="cart-total-price" id="cartTotalPrice">$0.00</span>
+      </div>
+      <button class="btn-checkout">Proceed to Checkout <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </aside>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="nav-logo">LUXE<span class="accent">.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#categories" class="nav-link">Categories</a></li>
+      <li><a href="#products" class="nav-link">Products</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="searchToggle" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button class="nav-icon-btn cart-toggle" id="cartToggle" aria-label="Cart">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- SEARCH BAR -->
+  <div class="search-bar-wrap" id="searchBarWrap">
+    <div class="search-inner">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="Search products, categories..." autocomplete="off" />
+      <button id="searchClear"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80" alt="Hero" class="hero-img" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow reveal" style="--d:0.1s">New Season · 2025 Collection</p>
+      <h1 class="hero-title reveal" style="--d:0.25s">Elevate Your<br /><em>Everyday Style</em></h1>
+      <p class="hero-sub reveal" style="--d:0.4s">Curated premium essentials crafted for those who appreciate quality without compromise.</p>
+      <div class="hero-btns reveal" style="--d:0.55s">
+        <a href="#products" class="btn btn-primary">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#categories" class="btn btn-ghost">Browse Categories</a>
+      </div>
+      <div class="hero-stats reveal" style="--d:0.7s">
+        <div class="hero-stat"><span class="stat-n">12K+</span><span>Happy Clients</span></div>
+        <div class="hero-stat-div"></div>
+        <div class="hero-stat"><span class="stat-n">500+</span><span>Products</span></div>
+        <div class="hero-stat-div"></div>
+        <div class="hero-stat"><span class="stat-n">4.9★</span><span>Avg Rating</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>Free Shipping Over $99</span><span class="dot">✦</span>
+      <span>New Arrivals Weekly</span><span class="dot">✦</span>
+      <span>Premium Quality Guaranteed</span><span class="dot">✦</span>
+      <span>Easy 30-Day Returns</span><span class="dot">✦</span>
+      <span>Exclusive Member Discounts</span><span class="dot">✦</span>
+      <span>Free Shipping Over $99</span><span class="dot">✦</span>
+      <span>New Arrivals Weekly</span><span class="dot">✦</span>
+      <span>Premium Quality Guaranteed</span><span class="dot">✦</span>
+      <span>Easy 30-Day Returns</span><span class="dot">✦</span>
+      <span>Exclusive Member Discounts</span><span class="dot">✦</span>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Shop By</p>
+        <h2 class="section-title">Categories</h2>
+      </div>
+      <div class="categories-grid" id="categoriesGrid"></div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section section-dark" id="products">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Hand-Picked For You</p>
+        <h2 class="section-title">Featured Products</h2>
+      </div>
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="Electronics">Electronics</button>
+        <button class="filter-btn" data-filter="Fashion">Fashion</button>
+        <button class="filter-btn" data-filter="Home">Home</button>
+        <button class="filter-btn" data-filter="Beauty">Beauty</button>
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+      <p class="no-results" id="noResults" style="display:none">No products found for your search.</p>
+    </div>
+  </section>
+
+  <!-- PROMO -->
+  <div class="promo-banner">
+    <div class="promo-bg">
+      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1400&q=80" alt="Promo" />
+      <div class="promo-overlay"></div>
+    </div>
+    <div class="promo-content reveal">
+      <p class="eyebrow" style="color:#d4b896">Limited Time Offer</p>
+      <h2>Get 30% Off Your<br />First Purchase</h2>
+      <p>Use code <strong class="promo-code">LUXE30</strong> at checkout</p>
+      <a href="#products" class="btn btn-primary">Claim Offer</a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">We'd Love To Hear</p>
+        <h2 class="section-title">Get In Touch</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <h3>Let's Talk</h3>
+          <p>Have a question about a product or order? Our team is here for you.</p>
+          <div class="contact-items">
+            <div class="contact-item"><i class="fa-solid fa-envelope"></i><span>support@luxe.store</span></div>
+            <div class="contact-item"><i class="fa-solid fa-phone"></i><span>+1 (800) 555-LUXE</span></div>
+            <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>123 Commerce Ave, New York, NY</span></div>
+          </div>
+          <div class="contact-socials">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="Jane" />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Doe" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="jane@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea rows="4" placeholder="Tell us how we can help..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">LUXE<span class="accent">.</span></div>
+          <p>Premium curated goods for the discerning shopper. Quality, style, and trust — delivered.</p>
+          <div class="footer-socials">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">Best Sellers</a></li>
+            <li><a href="#">Electronics</a></li>
+            <li><a href="#">Fashion</a></li>
+            <li><a href="#">Home & Living</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">Returns & Refunds</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p class="footer-newsletter-text">Get exclusive deals and style tips in your inbox.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="your@email.com" />
+            <button><i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 LUXE. All rights reserved.</p>
+        <div class="footer-payments">
+          <i class="fa-brands fa-cc-visa"></i>
+          <i class="fa-brands fa-cc-mastercard"></i>
+          <i class="fa-brands fa-cc-paypal"></i>
+          <i class="fa-brands fa-cc-apple-pay"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
